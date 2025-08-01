@@ -38,9 +38,8 @@ We're currently building the frontend pages and planning the backend + AI integr
 ├── pricing.html
 ├── contact.html
 ├── 404.html
-├── style.css
-├── script.js           # Form validation
-└── images/             # Team & placeholder images
+├── styles.css
+└── script.js           # Form validation
 ```
 
 ---
