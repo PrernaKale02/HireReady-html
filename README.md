@@ -8,7 +8,6 @@
 
 ## Project Status
 
-This is a **mini project** for the _Artificial Intelligence Lab_ (T.E. CMPN – Semester V).  
 We're currently building the frontend pages and planning the backend + AI integrations.
 
 ### Completed So Far
