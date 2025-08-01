@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HireReady - Resume Info Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --primary: #0052cc;
+      --secondary: #6fc3df;
+      --error-color: #bf1208;
+      --text-dark: #222;
+      --text-light: #fff;
+      --bg-light: #f8f9fa;
+      --input-border: #bbb;
+      --input-focus: #0052cc;
+      --shadow: rgba(0, 82, 204, 0.12);
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .form-container {
+      background: #fff;
+      max-width: 900px;   
+      min-width: 600px;   
+      width: 90%;
+      padding: 56px 48px 56px 48px;
+      border-radius: 16px;
+      box-shadow: 0 14px 40px var(--shadow);
+      text-align: left;
+      transition: box-shadow 0.3s ease;
+    }
+    .form-container:hover {
+      box-shadow: 0 18px 40px rgba(0, 82, 204, 0.25);
+    }
+    h2 {
+      margin-bottom: 40px;
+      text-align: center;
+      color: var(--primary);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      font-size: 2.5rem; /* Bigger */
+      user-select: none;
+    }
+    label {
+      display: block;
+      margin: 20px 0 10px 0;
+      font-weight: 600;
+      font-size: 1.2rem;
+      user-select: none;
+    }
+    input {
+      width: 100%;
+      padding: 16px 18px;
+      border-radius: 10px;
+      border: 2px solid var(--input-border);
+      font-size: 1.15rem;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      font-family: inherit;
+      user-select: text;
+    }
+    input:focus {
+      outline: none;
+      border-color: var(--input-focus);
+      box-shadow: 0 0 8px var(--input-focus);
+      background-color: #fcfcff;
+    }
+    .error {
+      color: var(--error-color);
+      font-size: 0.9rem;
+      margin: 4px 0 0 0;
+      min-height: 20px;
+      font-weight: 600;
+      user-select: none;
+    }
+    button {
+      background: var(--primary);
+      color: var(--text-light);
+      border: none;
+      padding: 20px 0;
+      font-size: 1.4rem;
+      border-radius: 12px;
+      font-weight: 800;
+      margin-top: 48px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      box-shadow: 0 6px 12px rgba(0, 82, 204, 0.25);
+      letter-spacing: 0.04em;
+    }
+    button:hover,
+    button:focus {
+      background: var(--secondary);
+      box-shadow: 0 8px 20px rgba(111, 195, 223, 0.8);
+      outline: none;
+    }
+    .back-link {
+      display: block;
+      margin-top: 22px;
+      text-align: center;
+      font-size: 1rem;
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+      user-select: none;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .back-link:hover {
+      color: var(--secondary);
+    }
+    @media (max-width: 480px) {
+      .form-container {
+        padding: 40px 32px 40px 32px;
+        max-width: 100%;
+      }
+      h2 {
+        font-size: 2.1rem;
+        margin-bottom: 36px;
+      }
+      label, input, button, .back-link {
+        font-size: 1.15rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="form-container" aria-label="Resume information form">
+      <h2>Start Your Resume</h2>
+      <form id="resume-form" novalidate>
+        <label for="name">Full Name<span aria-hidden="true">*</span></label>
+        <input type="text" id="name" name="name" autocomplete="name" required aria-describedby="name-error" />
+        <div class="error" id="name-error" aria-live="polite"></div>
+
+        <label for="email">Email<span aria-hidden="true">*</span></label>
+        <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-error" />
+        <div class="error" id="email-error" aria-live="polite"></div>
+
+        <label for="phone">Phone Number<span aria-hidden="true">*</span></label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" required aria-describedby="phone-error" />
+        <div class="error" id="phone-error" aria-live="polite"></div>
+
+        <label for="role">Current Role<span aria-hidden="true">*</span></label>
+        <input type="text" id="role" name="role" required aria-describedby="role-error" />
+        <div class="error" id="role-error" aria-live="polite"></div>
+
+        <button type="submit" aria-label="Submit resume information form">Continue</button>
+      </form>
+      <a href="index.html" class="back-link">&larr; Back to Home</a>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

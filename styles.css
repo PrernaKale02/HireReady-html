@@ -1,0 +1,200 @@
+/* === VARIABLES === */
+:root {
+  --primary: #0052cc;
+  --secondary: #6fc3df;
+  --error-color: #bf1208;
+  --text-dark: #222;
+  --text-light: #fff;
+  --bg-light: #f8f9fa;
+  --shadow: rgba(0, 82, 204, 0.12);
+}
+
+/* === GLOBAL RESET === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  min-height: 100vh;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* === HEADERS === */
+h1, h2, h3 {
+  color: var(--primary);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+header {
+  margin-bottom: 40px;
+}
+
+/* === FORM STYLING === */
+form {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+label {
+  display: block;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 14px 16px;
+  margin-top: 8px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 6px var(--primary);
+  background-color: #fcfcff;
+}
+
+/* === BUTTONS === */
+button,
+a.btn {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--text-light);
+  padding: 14px 24px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  margin-top: 30px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 12px rgba(0, 82, 204, 0.25);
+}
+
+button:hover,
+a.btn:hover {
+  background: var(--secondary);
+  color: #fff;
+}
+
+/* === TEMPLATE GALLERY === */
+.template-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.template-option {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 250px;
+}
+
+.template-option img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+/* === PREVIEW SECTION === */
+.resume-preview {
+  max-width: 800px;
+  background: #fff;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  font-size: 1rem;
+}
+
+/* === FOOTER === */
+footer {
+  margin-top: 50px;
+  text-align: center;
+  color: #888;
+  font-size: 0.95rem;
+}
+
+footer a {
+  color: var(--primary);
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+footer a:hover {
+  color: var(--secondary);
+}
+
+/* === 404 PAGE === */
+.page-404 {
+  text-align: center;
+  padding-top: 80px;
+}
+
+.page-404 h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.page-404 p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+/* === ERROR MESSAGE === */
+.error {
+  color: var(--error-color);
+  font-size: 0.9rem;
+  margin-top: 6px;
+  min-height: 20px;
+  font-weight: 600;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+  form, .resume-preview {
+    padding: 20px;
+  }
+
+  .template-gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .template-option {
+    width: 100%;
+    max-width: 340px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  button, a.btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+}
