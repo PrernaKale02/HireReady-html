@@ -1,23 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Resume Preview - HireReady</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header>
-    <h1>Your Resume Preview</h1>
-  </header>
-  <main>
-    <div class="resume-preview">
-      <!-- Resume preview content inserted dynamically -->
-      <p>[Resume content will be shown here]</p>
-    </div>
-    <div class="buttons">
-      <button onclick="window.print()">Download PDF</button>
-      <a href="templates.html"><button>Change Template</button></a>
-    </div>
-  </main>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Resume Preview</title>
+		<link rel="stylesheet" href="styles.css" />
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background: #f4f4f4;
+				padding: 30px;
+			}
+
+			#resume-container {
+				max-width: 800px;
+				margin: auto;
+			}
+
+			/* Template 1: Simple classic */
+			.template1 {
+				background: white;
+				padding: 30px;
+				border: 2px solid #000;
+				font-family: Georgia, serif;
+			}
+
+			/* Template 2: Modern card style */
+			.template2 {
+				background: #fff;
+				padding: 40px;
+				border-radius: 12px;
+				box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+				font-family: "Segoe UI", sans-serif;
+			}
+
+			.template2 header {
+				text-align: center;
+				border-bottom: 2px solid #333;
+				margin-bottom: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="resume-container"></div>
+
+		<script>
+			window.onload = function () {
+				const resumeData = JSON.parse(localStorage.getItem("resumeData")) || {};
+				const params = new URLSearchParams(window.location.search);
+				const template = params.get("template");
+				const container = document.getElementById("resume-container");
+
+				if (template === "1") {
+					container.innerHTML = `
+          <div class="template1">
+            <h1>${resumeData.name || "Your Name"}</h1>
+            <p>${resumeData.email || "you@email.com"} | ${
+						resumeData.phone || "123-456-7890"
+					}</p>
+            <h2>Education</h2><p>${
+							resumeData.education || "Your education details"
+						}</p>
+            <h2>Experience</h2><p>${
+							resumeData.experience || "Your work experience"
+						}</p>
+            <h2>Skills</h2><p>${resumeData.skills || "Your skills"}</p>
+            <h2>Summary</h2><p>${
+							resumeData.summary || "Your career summary"
+						}</p>
+          </div>
+        `;
+				} else if (template === "2") {
+					container.innerHTML = `
+          <div class="template2">
+            <header>
+              <h1>${resumeData.name || "Your Name"}</h1>
+              <p>${resumeData.email || "you@email.com"} | ${
+						resumeData.phone || "123-456-7890"
+					}</p>
+            </header>
+            <main>
+              <section><h2>Education</h2><p>${
+								resumeData.education || "Education goes here"
+							}</p></section>
+              <section><h2>Experience</h2><p>${
+								resumeData.experience || "Experience goes here"
+							}</p></section>
+              <section><h2>Skills</h2><p>${
+								resumeData.skills || "Skills go here"
+							}</p></section>
+              <section><h2>Summary</h2><p>${
+								resumeData.summary || "Summary goes here"
+							}</p></section>
+            </main>
+          </div>
+        `;
+				}
+			};
+		</script>
+	</body>
 </html>

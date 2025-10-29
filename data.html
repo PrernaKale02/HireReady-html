@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>HireReady Resume Builder</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			:root {
+				--primary: #0052cc;
+				--secondary: #6fc3df;
+				--text-dark: #222;
+				--text-light: #fff;
+				--bg-light: #f8f9fa;
+			}
+
+			body {
+				font-family: "Segoe UI", Arial, sans-serif;
+				margin: 0;
+				background: var(--bg-light);
+				display: flex;
+				height: 100vh;
+			}
+
+			/* Layout */
+			.form-section {
+				flex: 1;
+				background: #fff;
+				padding: 30px;
+				border-right: 2px solid #eee;
+			}
+			.preview-section {
+				flex: 1;
+				padding: 30px;
+				background: #fff;
+				overflow-y: auto;
+			}
+
+			h2 {
+				color: var(--primary);
+				margin-bottom: 20px;
+			}
+
+			.form-step {
+				display: none;
+			}
+			.form-step.active {
+				display: block;
+			}
+
+			label {
+				display: block;
+				margin-bottom: 5px;
+				font-weight: 500;
+			}
+
+			input,
+			textarea {
+				width: 100%;
+				padding: 12px;
+				margin-bottom: 15px;
+				border: 1px solid #ccc;
+				border-radius: 6px;
+			}
+
+			.btn {
+				background: var(--primary);
+				color: var(--text-light);
+				padding: 12px 20px;
+				border: none;
+				border-radius: 6px;
+				cursor: pointer;
+				font-weight: bold;
+				margin: 5px;
+			}
+			.btn:hover {
+				background: var(--secondary);
+			}
+
+			/* Resume preview styling */
+			.resume {
+				max-width: 600px;
+				margin: auto;
+				padding: 20px;
+				border: 1px solid #ddd;
+				border-radius: 8px;
+				background: #fafafa;
+			}
+			.resume h1 {
+				margin-bottom: 10px;
+				color: var(--primary);
+			}
+			.resume h3 {
+				margin-top: 20px;
+				color: var(--secondary);
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Left Side - Form -->
+		<div class="form-section">
+			<h2>Resume Builder</h2>
+
+			<!-- Step 1: Contacts -->
+			<div class="form-step active">
+				<label>First Name</label>
+				<input type="text" id="firstName" oninput="updatePreview()" />
+				<label>Last Name</label>
+				<input type="text" id="lastName" oninput="updatePreview()" />
+				<label>Email</label>
+				<input type="email" id="email" oninput="updatePreview()" />
+				<label>Phone</label>
+				<input type="text" id="phone" oninput="updatePreview()" />
+			</div>
+
+			<!-- Step 2: Experience -->
+			<div class="form-step">
+				<label>Experience</label>
+				<textarea id="experience" rows="4" oninput="updatePreview()"></textarea>
+			</div>
+
+			<!-- Step 3: Education -->
+			<div class="form-step">
+				<label>Education</label>
+				<textarea id="education" rows="4" oninput="updatePreview()"></textarea>
+			</div>
+
+			<!-- Step 4: Skills -->
+			<div class="form-step">
+				<label>Skills</label>
+				<textarea id="skills" rows="4" oninput="updatePreview()"></textarea>
+			</div>
+
+			<!-- Step 5: Summary -->
+			<div class="form-step">
+				<label>Summary</label>
+				<textarea id="summary" rows="4" oninput="updatePreview()"></textarea>
+			</div>
+
+			<!-- Navigation buttons -->
+			<div>
+				<button class="btn" onclick="prevStep()">Back</button>
+				<button class="btn" onclick="nextStep()">Next</button>
+			</div>
+		</div>
+
+		<!-- Right Side - Resume Preview -->
+		<div class="preview-section">
+			<div class="resume" id="resumePreview">
+				<h1><span id="pFirstName"></span> <span id="pLastName"></span></h1>
+				<p><b>Email:</b> <span id="pEmail"></span></p>
+				<p><b>Phone:</b> <span id="pPhone"></span></p>
+
+				<h3>Experience</h3>
+				<p id="pExperience"></p>
+
+				<h3>Education</h3>
+				<p id="pEducation"></p>
+
+				<h3>Skills</h3>
+				<p id="pSkills"></p>
+
+				<h3>Summary</h3>
+				<p id="pSummary"></p>
+			</div>
+		</div>
+
+		<script>
+			let currentStep = 0;
+			const steps = document.querySelectorAll(".form-step");
+
+			function showStep() {
+				steps.forEach((step, index) => {
+					step.classList.toggle("active", index === currentStep);
+				});
+			}
+
+			function nextStep() {
+				if (currentStep < steps.length - 1) {
+					currentStep++;
+					showStep();
+				} else {
+					const resumeData = {
+						name:
+							document.getElementById("firstName").value +
+							" " +
+							document.getElementById("lastName").value,
+						email: document.getElementById("email").value,
+						phone: document.getElementById("phone").value,
+						experience: document.getElementById("experience").value,
+						education: document.getElementById("education").value,
+						skills: document.getElementById("skills").value,
+						summary: document.getElementById("summary").value,
+					};
+
+					localStorage.setItem("resumeData", JSON.stringify(resumeData));
+
+					window.location.href = "templates.html";
+				}
+			}
+
+			function prevStep() {
+				if (currentStep > 0) {
+					currentStep--;
+					showStep();
+				}
+			}
+
+			function updatePreview() {
+				document.getElementById("pFirstName").innerText =
+					document.getElementById("firstName").value;
+				document.getElementById("pLastName").innerText =
+					document.getElementById("lastName").value;
+				document.getElementById("pEmail").innerText =
+					document.getElementById("email").value;
+				document.getElementById("pPhone").innerText =
+					document.getElementById("phone").value;
+				document.getElementById("pExperience").innerText =
+					document.getElementById("experience").value;
+				document.getElementById("pEducation").innerText =
+					document.getElementById("education").value;
+				document.getElementById("pSkills").innerText =
+					document.getElementById("skills").value;
+				document.getElementById("pSummary").innerText =
+					document.getElementById("summary").value;
+			}
+		</script>
+	</body>
+</html>
