@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<title>HireReady - Create Your Professional Resume</title>
+		<title>HireReady - Login</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<style>
 			:root {
@@ -12,291 +12,196 @@
 				--text-light: #fff;
 				--bg-light: #f8f9fa;
 			}
-			* {
-				box-sizing: border-box;
-				margin: 0;
-				padding: 0;
-			}
 			body {
 				font-family: "Segoe UI", Arial, sans-serif;
 				background: var(--bg-light);
-				color: var(--text-dark);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				min-height: 100vh;
+				margin: 0;
 			}
-			/* Navbar */
-			.navbar {
+			.form-container {
 				background: #fff;
-				border-bottom: 1px solid #e0e0e0;
-				padding: 20px 0;
+				padding: 40px;
+				border-radius: 10px;
+				box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 				width: 100%;
-			}
-			.navbar-container {
-				max-width: 1100px;
-				margin: 0 auto;
-				display: flex;
-				align-items: center;
-				justify-content: space-between;
-				flex-wrap: wrap;
-				padding: 0 20px;
-			}
-			.navbar-brand {
-				font-weight: bold;
-				font-size: 1.6rem;
-				color: var(--primary);
-				text-decoration: none;
-			}
-			.navbar-links {
-				display: flex;
-				gap: 20px;
-				align-items: center;
-			}
-			.navbar-links a {
-				color: var(--text-dark);
-				text-decoration: none;
-				font-size: 1rem;
-				padding: 8px 16px;
-				border-radius: 3px;
-				transition: background 0.15s;
-			}
-			.navbar-links a.btn {
-				background: var(--primary);
-				color: var(--text-light);
-				font-weight: bold;
-				border: none;
-			}
-			.navbar-links a.btn:hover,
-			.navbar-links a:hover {
-				background: var(--secondary);
-				color: var(--text-light);
-			}
-			/* Hero */
-			.hero-section {
-				background: linear-gradient(
-					100deg,
-					var(--primary) 40%,
-					var(--secondary) 100%
-				);
-				color: var(--text-light);
+				max-width: 420px;
 				text-align: center;
-				padding: 80px 20px 60px 20px;
 			}
-			.hero-section h1 {
-				font-size: 2.5rem;
+			h2 {
+				color: var(--primary);
 				margin-bottom: 20px;
 			}
-			.hero-section p {
-				font-size: 1.2rem;
-				margin-bottom: 35px;
+			.form-group {
+				margin-bottom: 18px;
+				text-align: left;
 			}
-			.hero-section .btn {
-				background: #fff;
-				color: var(--primary);
+			label {
+				display: block;
+				margin-bottom: 6px;
+				color: var(--text-dark);
+				font-weight: 500;
+			}
+			input {
+				width: 100%;
+				padding: 12px;
+				border: 1px solid #ccc;
+				border-radius: 6px;
+				font-size: 1rem;
+				box-sizing: border-box;
+			}
+			.row {
+				display: flex;
+				gap: 10px;
+				align-items: center;
+			}
+			.show-pass {
+				padding: 10px 12px;
+				border-radius: 6px;
+				border: 1px solid #ccc;
+				background: var(--primary);
+				cursor: pointer;
+				width: 20%;
+			}
+			button {
+				background: var(--primary);
+				color: var(--text-light);
 				border: none;
-				padding: 16px 40px;
-				font-size: 1.1rem;
-				border-radius: 4px;
+				padding: 12px 20px;
+				font-size: 1rem;
+				border-radius: 6px;
+				cursor: pointer;
+				width: 100%;
+				transition: background 0.2s;
+			}
+			button:hover {
+				background: var(--secondary);
+			}
+			.form-footer {
+				margin-top: 14px;
+				font-size: 0.95rem;
+			}
+			.form-footer a {
+				color: var(--primary);
 				text-decoration: none;
 				font-weight: bold;
-				transition: background 0.18s, color 0.18s;
 			}
-			.hero-section .btn:hover {
-				background: var(--secondary);
-				color: #fff;
-			}
-			/* Features */
-			.features-section {
-				max-width: 1100px;
-				margin: 0 auto;
-				padding: 50px 20px 40px 20px;
-				display: flex;
-				flex-wrap: wrap;
-				gap: 30px;
-				justify-content: center;
-				text-align: center;
-			}
-			.feature-block {
-				background: #fff;
-				border-radius: 10px;
-				box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-				padding: 30px 24px 24px 24px;
-				flex: 1 1 265px;
-				min-width: 240px;
-				max-width: 340px;
-				margin: 10px;
-				transition: box-shadow 0.18s;
-			}
-			.feature-block:hover {
-				box-shadow: 0 8px 24px rgba(0, 82, 204, 0.1);
-			}
-			.feature-icon {
-				font-size: 2.2rem;
-				margin-bottom: 10px;
-				color: var(--primary);
-			}
-			.feature-block h5 {
-				margin-bottom: 10px;
-				font-size: 1.1rem;
-			}
-			/* Testimonials */
-			.testimonials-section {
-				background: var(--bg-light);
-				padding: 56px 10px;
-			}
-			.testimonials-container {
-				max-width: 950px;
-				margin: 0 auto;
-			}
-			.testimonials-section h3 {
-				text-align: center;
-				margin-bottom: 36px;
-			}
-			.testimonials-grid {
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: center;
-				gap: 32px;
-			}
-			.testimonial-block {
-				background: #fff;
-				border-radius: 8px;
-				box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-				padding: 23px 16px 18px 16px;
-				flex: 1 1 300px;
-				max-width: 370px;
-				text-align: center;
-			}
-			.testimonial-block blockquote {
-				font-style: italic;
-				color: #555;
-				margin-bottom: 8px;
-			}
-			.testimonial-block footer {
-				color: #888;
-				font-size: 0.98rem;
-			}
-			/* Footer */
-			footer {
-				background: #222;
-				color: #ccc;
-				text-align: center;
-				padding: 36px 14px 16px 14px;
-			}
-			footer a {
-				color: #fff;
-				text-decoration: none;
-				margin: 0 8px;
-				transition: color 0.15s;
-			}
-			footer a:hover {
+			.form-footer a:hover {
 				color: var(--secondary);
 			}
-			/* Responsive Styles */
-			@media (max-width: 900px) {
-				.features-section {
-					flex-direction: column;
-					align-items: stretch;
-				}
-				.testimonials-grid {
-					flex-direction: column;
-					gap: 24px;
-				}
+			.msg {
+				margin: 12px 0 0 0;
+				font-size: 0.95rem;
+				min-height: 1.2em;
 			}
-			@media (max-width: 600px) {
-				.hero-section h1 {
-					font-size: 2rem;
-				}
-				.features-section,
-				.testimonials-container {
-					padding: 0;
-				}
+			.msg.error {
+				color: #c62828;
+			}
+			.msg.success {
+				color: #2e7d32;
+			}
+			.helper {
+				font-size: 0.85rem;
+				color: #666;
+				margin-top: 8px;
+				text-align: left;
 			}
 		</style>
 	</head>
 	<body>
-		<!-- Navigation Bar -->
-		<nav class="navbar">
-			<div class="navbar-container">
-				<a class="navbar-brand" href="#">HireReady</a>
-				<div class="navbar-links">
-					<a href="index.html">Home</a>
-					<a href="features.html">Features</a>
-					<a href="pricing.html">Pricing</a>
-					<a href="contact.html">Contact</a>
-					<a href="about.html">About us</a>
-					<a class="btn" href="login.html">Get Started</a>
+		<div class="form-container">
+			<h2>Welcome Back</h2>
+			<form id="loginForm" aria-describedby="formHelp">
+				<div class="form-group">
+					<label for="email">Email Address</label>
+					<input
+						type="email"
+						id="email"
+						placeholder="Enter your email"
+						required
+					/>
 				</div>
-			</div>
-		</nav>
-
-		<!-- Hero Section -->
-		<section class="hero-section">
-			<h1>Build a Professional Resume in Minutes</h1>
-			<p>
-				Our simple and intuitive tool helps you craft a winning resume for your
-				dream job. No design skills required.
-			</p>
-			<a href="data.html" class="btn">Create Your Resume</a>
-		</section>
-
-		<!-- Features -->
-		<section class="features-section">
-			<div class="feature-block">
-				<div class="feature-icon">&#x1F4C4;</div>
-				<!-- Page icon -->
-				<h5>Easy-to-Use Templates</h5>
-				<p>
-					Choose from a variety of modern, HR-approved resume templates to stand
-					out from the crowd.
-				</p>
-			</div>
-			<div class="feature-block">
-				<div class="feature-icon">&#x270E;&#xFE0F;</div>
-				<!-- Pencil icon -->
-				<h5>Fast Customization</h5>
-				<p>
-					Edit your details, rearrange sections, and personalize your resume
-					with live previews.
-				</p>
-			</div>
-			<div class="feature-block">
-				<div class="feature-icon">&#x2B07;&#xFE0F;</div>
-				<!-- Down arrow icon -->
-				<h5>Download & Share</h5>
-				<p>
-					Export your resume as PDF and share it online with a unique link or
-					via email.
-				</p>
-			</div>
-		</section>
-
-		<!-- Testimonials -->
-		<section class="testimonials-section">
-			<div class="testimonials-container">
-				<h3>What Our Users Say</h3>
-				<div class="testimonials-grid">
-					<div class="testimonial-block">
-						<blockquote>
-							"The HireReady made job applications a breeze. I landed interviews
-							within a week!"
-						</blockquote>
-						<footer>Sara P.</footer>
-					</div>
-					<div class="testimonial-block">
-						<blockquote>
-							"Loved the templates! My resume looks professional and polished."
-						</blockquote>
-						<footer>James L.</footer>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<div class="row">
+						<input
+							type="password"
+							id="password"
+							placeholder="Enter your password"
+							required
+						/>
+						<button
+							type="button"
+							id="togglePass"
+							class="show-pass"
+							aria-pressed="false"
+						>
+							Show
+						</button>
 					</div>
 				</div>
-			</div>
-		</section>
+				<button type="submit">Login</button>
+				<div id="msg" class="msg" role="status" aria-live="polite"></div>
+			</form>
+			<!-- <div id="formHelp" class="helper">
+				Don’t have an account? <a href="sign-up.html">Sign Up</a>
+			</div> -->
+			<div
+				class="form-footer"
+				style="margin-top: 10px; font-size: 0.9rem; color: #444"
+			></div>
+		</div>
 
-		<!-- Footer -->
-		<footer>
-			<p>&copy; 2025 HireReady. All rights reserved.</p>
-			<p>
-				<a href="#">Privacy Policy</a> |
-				<a href="#">Terms of Service</a>
-			</p>
-		</footer>
+		<script>
+			const DUMMY_USER = {
+				email: "prernakale2302@gmail.com",
+				password: "Abc@123",
+			};
+
+			const form = document.getElementById("loginForm");
+			const emailInput = document.getElementById("email");
+			const passInput = document.getElementById("password");
+			const msgEl = document.getElementById("msg");
+			const toggleBtn = document.getElementById("togglePass");
+
+			toggleBtn.addEventListener("click", () => {
+				const isHidden = passInput.type === "password";
+				passInput.type = isHidden ? "text" : "password";
+				toggleBtn.textContent = isHidden ? "Hide" : "Show";
+				toggleBtn.setAttribute("aria-pressed", String(isHidden));
+			});
+
+			form.addEventListener("submit", (e) => {
+				e.preventDefault();
+				const email = emailInput.value.trim();
+				const password = passInput.value;
+
+				if (!email || !password) {
+					showMessage("Please enter both email and password.", "error");
+					return;
+				}
+
+				if (
+					email.toLowerCase() === DUMMY_USER.email &&
+					password === DUMMY_USER.password
+				) {
+					showMessage("Login successful! Redirecting...", "success");
+					sessionStorage.setItem("hireready_logged_in", "true");
+					sessionStorage.setItem("hireready_user_email", email);
+					setTimeout(() => {
+						window.location.href = "home.html";
+					}, 900);
+				} else {
+					showMessage("Invalid credentials!", "error");
+				}
+			});
+
+			function showMessage(text, type) {
+				msgEl.textContent = text;
+				msgEl.className = "msg " + (type === "error" ? "error" : "success");
+			}
+		</script>
 	</body>
 </html>
